@@ -15,10 +15,13 @@ jobs:
     - name: Configurar o ambiente Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '24.x' # Atualizado para resolver o aviso amarelo do GitHub
+        node-version: '24.x'
 
     - name: Instalar as dependências do projeto
-      run: npm install
+      run: npm ci
+
+    - name: Liberar permissao de execucao do Jest no Linux
+      run: chmod +x ./node_modules/.bin/jest
 
     - name: Executar os testes automatizados
       run: npm test
