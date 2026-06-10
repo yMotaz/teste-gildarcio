@@ -3,24 +3,22 @@ name: CI da API Rest
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   testes:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonando o repositório
+    - name: Baixar o código do repositório
       uses: actions/checkout@v4
-      
-    - name: Configurando o Node.js
+
+    - name: Configurar o ambiente Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
-        
-    - name: Instalando dependências
+        node-version: '24.x' # Atualizado para resolver o aviso amarelo do GitHub
+
+    - name: Instalar as dependências do projeto
       run: npm install
-      
-    - name: Rodando os testes (Jest)
+
+    - name: Executar os testes automatizados
       run: npm test
