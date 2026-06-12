@@ -6,7 +6,7 @@ describe('Testes da API Rest', () => {
     const res = await request(app).get('/api/status');
     
     // O teste verifica se o status HTTP e a mensagem estão corretos
-    expect(res.statusCode).toBe(300);
+    expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('status', 'sucesso');
   });
 });
